@@ -25,9 +25,11 @@ mongoose.connect(db_URL, {useUnifiedTopology:true, useNewUrlParser:true}, functi
 
 
 // index page
-app.get('/', function(req, res) {  
-    res.render('pages/index');
-  });
+var indexController = require('./controllers/indexcontroller.js');
+app.get('/',indexController.GetAll);
+// app.get('/', function(req, res) {  
+//     res.render('pages/index');
+//   });
   
 // about page
 app.get('/about', function(req, res) {
@@ -36,6 +38,7 @@ app.get('/about', function(req, res) {
 
 // rooms page
 var roomController = require('./controllers/roomcontroller.js');
+const { urlencoded } = require('express');
 app.get('/rooms', roomController.GetAll);
 
 // book room
@@ -45,9 +48,8 @@ app.get('/book', function(req,res){
 
 
 // room-details page
-app.get('/room-details', function(req, res) {
-  res.render('pages/room-details');
-});
+app.get('/room-details',indexController.GetEachRoom);
+
 
 // booking page
 app.get('/make_booking', function(req, res) {
@@ -58,6 +60,15 @@ app.get('/make_booking', function(req, res) {
 app.get('/manage_bookings', function(req, res) {
     res.render('pages/manage_bookings');
   });
+  // Get rooms
+
+app.get('/findbytype',indexController.GetRoom);
+// app.get('/findbytype',function(req,res){
+//   console.log("findtype is called and its from the app.js");
+//   indexController.GetRoom;
+//   res.render('pages/rooms');
+// });
+
 
 
 function insertNewCustomer(newCustomer){

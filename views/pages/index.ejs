@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <%- include('../partials/head'); %>
 </head>
 <body class="container">
@@ -10,9 +11,180 @@
 </header>
 
 <main>
-  <div class="jumbotron">
-    <h1>Header 1</h1>
-    <p>Welcome to ADJ Hotel</p>
+  <div class="jumbotron" style="background-image: url('images/cover.jpg');background-size: 100% 100%;background-repeat: no-repeat;height: 600px;">
+    <div >
+    
+    
+      <p class="welcome">Welcome to ADJ Hotel</p>
+      <div class="availabilty" >
+        <form action="/findbytype" id="roomfind" method="GET">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="rooms" class="label">
+                Room Types
+                
+              </label>
+            </div>
+            
+            <div class="col-md-2">
+              <label for="Check-in" class="label">Check-In</label>
+            </div>
+            <div class="col-md-2">
+              <label for="Check-out" class="label">Check-Out</label>
+            </div>
+          </div>
+          <div class="row">
+            <!-- <div class="dropdown row dest col-md-4"> -->
+              <div class="col-md-4">
+              <!-- <div class="col-md-10 in"></div>
+              <span><i class="fa fa-chevron-down icon col-md-2"></i></span> -->
+              <!-- <div class="dropdown-content">
+                <div class="room-label">
+                  Rooms
+                </div>
+                <div class="room-count">
+                  Rooms : <%= %> <span class="minus"><button class="dropdown-btn" href="#"><i class="fa fa-minus-circle fa-lg"></i></button></span><span class="add"><button class="dropdown-btn" href="#"><i class="fa fa-plus-circle fa-lg"></i></button></span>
+                </div>
+                <div class="adult-label">
+                  Adults
+                </div>
+                <div class="adult-count">
+                  Adults : {{}}<span class="minus"><button class="dropdown-btn" href="#"><i class="fa fa-minus-circle fa-lg"></i></button></span><span class="add"><button class="dropdown-btn" href="#"><i class="fa fa-plus-circle fa-lg"></i></button></span>
+                </div>
+
+              </div> -->
+              <select name="rooms" class="type" id="room" form="roomfind">
+                <option value="All">All</option>
+                <option value="Standard">Standard</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Luxury-Deluxe">Luxury Deluxe</option>
+                <option value="Double">Double</option>
+                <option value="Presidential Suite">Presidential Suite</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <input type="date" class="date" value="Check-in" placeholder="Check-in">
+            </div>
+            <div class="col-md-2">
+              <input type="date" class="date"value="Check-out" placeholder="Check-out">
+            </div>
+            <div class="col-md-3" >
+              <input type="submit" class="find"value="Check Availability">
+              <!-- <button class="find" href="#" >Check Availability</button> -->
+            </div>
+          </div>
+
+          
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <div class="explore">
+    Explore Our Rooms
+  </div>
+  <div class="row">
+  <!-- Room details  -->
+  <%
+  if(roomsList.length!=0){
+    var i=1;
+    roomsList.forEach(function(data){
+  %>
+    
+      <div class="img col-md-3" >
+        <a href="/room-details?id=<%=data.type %>"id='<%data.type%>'>
+        <img class="img1" src="/images/<%=data.image %>" alt="">
+        <div class="desc"><%=data.type %></div>
+        </a>
+      </div>
+    
+  <% i++; })} %>
+</div>
+
+  <!-- Room details end -->
+  
+  <section class="services spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="services__item">
+                  <img src="images/services/services-1.png" alt="">
+                    <h4>Free Wi-Fi</h4>
+                    <p>The massive investment in a hotel or resort requires constant reviews and control in order to
+                        make it a successful investment.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <img src="images/services/services-2.png" alt="">
+                    <h4>Premium Pool</h4>
+                    <p>Choose from 4 unique ready made concepts, let us help you create the concept perfect for you
+                        or let HCA.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <img src="images/services/services-3.png" alt="">
+                    <h4>Coffee Maker</h4>
+                    <p>HCA's Owner's Representation is taking care of just these important factors, may it be
+                        through regular site visits and spot checks.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <img src="images/services/services-4.png" alt="">
+                    <h4>Bar Wine</h4>
+                    <p>For properties with third party management companies, HCA Consultants will as well administer
+                        the terms and conditions.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <img src="images/services/services-5.png" alt="">
+                    <h4>TV HD</h4>
+                    <p>We provide a critical analysis of a hotel's marketing strategy, bench-marking it against
+                        industry and competitive practices.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="services__item">
+                    <img src="images/services/services-6.png" alt="">
+                    <h4>Restaurant</h4>
+                    <p>A hotel and restaurant investment deserves careful and market oriented financial planning and
+                        projections.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  <div class="client">
+    <div class="client-top">
+      What Our Clients Say
+    </div>
+    <div class="row">
+      
+      <div class="review col-md-4">
+          <div class="text">
+            "Booking the luxury Deluxe Room-City View at a really affordable price at ADJ is quite a steal."
+          </div>
+          <div class="cust">John Smith</div>
+      </div>
+      <div class="review col-md-4">
+        <div class="text">
+          "I will keep on recommending Agoda to my friends."
+        </div>
+        <div class="cust">David Miller</div>
+      </div>
+      <div class="review col-md-4">
+        <div class="text">
+          "Great customer service from the staffs."
+        </div>
+        <div class="cust">Jack Sparrow</div>
+      </div>
+    
+    </div>
+  </div>
+
 
   </div>
 </main>
@@ -23,3 +195,296 @@
 
 </body>
 </html>
+<style >
+  html{
+    background-color: #212d37;
+    
+  }
+  .availabilty{
+  border-radius: 8px;
+  border: 1px solid ;
+  border-color: #707070;
+  padding: 4px;
+	background-color: #F8F9FC;
+	margin-left: 2em;
+	margin-right: 2em;
+  margin-top: 20em;
+  margin-bottom: 1px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+
+}
+.label{
+  font-size: 18px;
+  float:left;
+  margin-left: 1em;
+  color: #777C81;
+  font-family: "DM Sans", sans-serif;
+    
+  font-weight: 400;
+  line-height: 26px;
+}
+.type{
+  height:40px ;
+  border-radius: 8px;
+  border: 1px solid ;
+  border-color: #707070;
+  font-size: 14px;
+  margin-left: 25px;
+  width:100%;
+  margin-right: 4px;
+  margin-bottom: 4px;
+
+}
+.dest{
+  height:40px ;
+  border-radius: 8px;
+  border: 1px solid ;
+  border-color: #707070;
+  font-size: 14px;
+  margin-left: 25px;
+  width:100%;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  
+}
+.in{
+  margin-top: 7px;
+  border: none;
+  
+}
+.date{
+  height: 40px;
+  border-color: #707070;
+  border-radius: 8px;
+  border: 1px solid ;
+  font-size: 14px;
+  margin-right: 4px;
+  margin-left: 4px;
+  width: 110%;
+}
+.find{
+  border-radius: 8px;
+  height: 40px;
+  margin-left: 4px;
+  margin-bottom: 4px;
+  width:100%;
+  color: #fff;
+  border: none;
+  background-color: #444054;
+}
+.icon{
+  float: right;
+  /* margin-left: 1px; */
+  margin-top: -15px;
+  margin-right: 0px;
+  /* vertical-align: initial; */
+  
+}
+.welcome{
+  text-align: center;
+  letter-spacing: 4px;
+  font-weight: 600;
+  color: #E9AD28;
+  font-size: 40px;
+  font-family: "Barlow Condensed", sans-serif;;
+}
+.explore{
+  text-align: center;
+  font-size: 28px;
+  font-family: "Barlow Condensed", sans-serif;
+  margin-bottom: 30px;
+}
+.img{
+
+  max-width: 100%;
+  height: 350px;
+  position: relative;
+  box-sizing: border-box;
+  border: 2px solid #f8f9fa;
+  margin-bottom: 5%;
+  padding: 0px;
+  padding-bottom: 3px;
+  margin-left: 75px;
+  margin-right: 15px;
+}
+.img1{
+  height: 90%;
+  width: 100%;
+  transition: transform .2s;
+  margin-bottom: 2px;
+  
+}
+.img1:hover{
+  transform:scale(1.2);
+}
+.desc{
+  margin-top: 5px;
+  margin-bottom: 3px;
+  font-size: 20px;
+  color: #f8f9fa;
+  font-weight: 600;
+  font-family: "Barlow Condensed", sans-serif;
+}
+.container{
+  max-width: 100%;
+}
+.client{
+  background-color: #212d37;
+  text-align: center;
+  color: #F8F9FC;
+  position: relative;
+  font-size: large;
+}
+.review{
+  box-sizing: border-box;
+  border:1px solid #5ee4e4;
+  padding: 40px;
+  margin-left: 6%;
+  /* margin-right: 3px; */
+  margin-top: 2%;
+  max-width: 25%;
+}
+.cust{
+  /* margin-top: 3%; */
+  /* margin-bottom: 0px; */
+  position: absolute;
+  bottom: 10px;
+  margin-left: 23%;
+  
+  
+}
+.client-top{
+  font-size: xx-large;
+  font-weight: bold;
+}
+.text{
+  margin-bottom: 0px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 80%;
+  /* min-width: 160px; */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+  line-height: 90px;
+  box-sizing: border-box;
+  border: 1px solid #D7DAE2;
+  border-radius: 2px;
+  padding:10px;
+  padding-bottom: 20px;
+}
+.add{
+  float: right;
+  margin-right: 2px;
+  /* margin-left: 2px; */
+}
+.minus{
+  float: right;
+  /* margin-right: 10px; */
+  
+}
+
+.room-count{
+  border: 1px solid;
+  box-sizing: border-box;
+  border-color: #D7DAE2;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 0px;
+  margin-bottom: 1px;
+  border-radius: 3px;
+  line-height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.room-label{
+  margin-bottom: 0px;
+  line-height: 35px;
+  margin-top: 2px;
+}
+.adult-count{
+  border: 1px solid;
+  box-sizing: border-box;
+  border-color: #D7DAE2;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 0px;
+  margin-bottom: 3px;
+  border-radius: 3px;
+  line-height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.adult-label{
+  margin-bottom: 5px;
+  line-height: 35px;
+  margin-top: 2px;
+}
+.dropdown-btn{
+  border: none;
+  background-color: inherit;
+}
+/* input[type="date"]::before {
+	color: #999999;
+	content: attr(placeholder);
+}
+input[type="date"] {
+	color: #ffffff;
+}
+input[type="date"]:focus,
+input[type="date"]:valid {
+	color: #666666;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+	content: "" !important;
+} */
+/* section */
+.services{
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: lavender;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.section-title {
+	margin-bottom: 55px;
+	text-align: center;
+}
+
+.section-title h5 {
+	color: #E9AD28;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-bottom: 20px;
+}
+
+.section-title h2 {
+	font-size: 44px;
+	color: #19191A;
+}
+
+.set-bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+
+.spad {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+/* section end */
+
+</style>
