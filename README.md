@@ -1,6 +1,8 @@
 # NodeJsMongo-db
 
 Room Rental Website Application
+
+
 Introduction:
 This is a web application for renting rooms to users, built using NodeJS and MongoDB. The application follows the Model-View-Controller (MVC) architectural pattern and allows users to perform CRUD (Create, Read, Update, Delete) operations. The web pages are designed to be responsive and can be accessed on various devices.
 
