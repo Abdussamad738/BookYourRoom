@@ -1,6 +1,6 @@
 
 var mongoose = require('mongoose'), Room = mongoose.model('room')
-console.log("index controller is called");
+
 module.exports={
     GetRoom:function(req,res){
         // console.log(req.query);
@@ -48,7 +48,7 @@ module.exports={
         })        
     },
     GetEachRoom: function(req,res){
-        console.log('this is from geteachroom in indexcontroller');
+//         console.log('this is from geteachroom in indexcontroller');
         var id=req.query.id;
         var test="test";
         console.log(id);
